@@ -1,0 +1,26 @@
+<!-- projectsコントローラのindexアクションに対応するviewの名前は、このファイル名のようになる。規約の一つである。 -->
+<h1>Projects</h1>
+<h4>試しだよ〜ん"ピカッー"</h4>
+<ul>
+	<!--
+	ループをまあしてあげる。
+	ルビーを使うのに、%%でくくってあげる
+	projectsの中身をprojectで回してあげればよい。
+	以下はルビーの書き方
+
+	ここの理解が中途半端・・・
+	オブジェクト.each do |変数|
+	  実行する処理1
+	  実行する処理2
+	end
+	-->
+	<% @projects.each do |project|%>
+
+	<!-- 次に書いた式を評価して、その内容を表示しない際ということ -->
+	<!-- リンクをつけたいので、link_to, project.name　リンク先のプロジェクトのパスを渡す必要がある。 -->
+	<li><%= link_to project.title,project_path(project.id) %></li>
+	<% end %>
+</ul>
+
+<!-- link_to, 名前（表示してみえるもの）, パスの名前 -->
+<p><%= link_to "Add new", new_project_path %></p>

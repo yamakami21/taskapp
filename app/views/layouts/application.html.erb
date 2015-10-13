@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<!-- 共通のヘッダー-->
+<!-- 見かけを管理するもの -->
+<head>
+  <title>Taskapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- bootstrapを使えるようにする。 -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+    <!-- すべてのウェブページにおいて画像を添付するとき -->
+    <!-- <%=%>はルビーから渡したデータを埋め込んでいる -->
+    <!--
+     railsの中にイメージタグヘルパーというものがある
+     以下のように書くと、assetsの中のimagesの中に入ってくれる。
+     （railsの機能）
+    -->
+    <%= image_tag "logo.png"%>
+    <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">TaskApp</a>
+      </div>
+    </div>
+    </nav>
+    <div class="container">
+        <%= yield %>
+        <!-- 表示する文字列、pathの名前 -->
+        <button type="button" class="btn btn-primary">Button</button>
+        <button type="button" class="btn btn-warning"><%= link_to "Home", projects_path %></button>
+        <br/>
+        <%= link_to "Home", projects_path %>
+    </div>
+</body>
+</html>
