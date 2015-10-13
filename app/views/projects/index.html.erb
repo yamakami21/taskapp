@@ -18,9 +18,20 @@
 
 	<!-- 次に書いた式を評価して、その内容を表示しない際ということ -->
 	<!-- リンクをつけたいので、link_to, project.name　リンク先のプロジェクトのパスを渡す必要がある。 -->
-	<li><%= link_to project.title,project_path(project.id) %></li>
+	<li>
+		<%= link_to project.title,project_path(project.id) %>
+		<%= link_to "[編集]", edit_project_path(project.id)%>
+	</li>
 	<% end %>
 </ul>
 
-<!-- link_to, 名前（表示してみえるもの）, パスの名前 -->
+<!--
+link_to, 名前（表示してみえるもの）, パスの名前
+追加するときの名前とlink先を指定してあげる、このときのpathはnew_projectで、そのURLはprojects/newになる、それでアクションはprojects#newなので、
+そうか、
+1.ビューのpathの指定と、
+2.newのビューの作成、
+3.アクションの作成をしてあげるだけでよい。
+-->
+
 <p><%= link_to "Add new", new_project_path %></p>
