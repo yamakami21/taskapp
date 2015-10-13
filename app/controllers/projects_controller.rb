@@ -3,6 +3,12 @@ class ProjectsController < ApplicationController
 # コントローラとビューの対応するものを作っていく１
 
 
+# コントローラのアクションの中で共通なものをまとめる機能がある。
+# そのアクションの前
+# after_actionのようなものもある。
+before_action :set_project, only: [:show, :edit, :update, :destroy]
+
+
     def index
         # @をつけた変数はviewの中でそのまま使うことがでできる。
         # projectsのすべてを引っ張ってくる。
@@ -13,10 +19,10 @@ class ProjectsController < ApplicationController
 
         @projects = Project.all
     end
-
+    # *******************************************
     def show
         # コントローラでparams[:]で取ることができる。
-    	@project = Project.find(params[:id])
+    	# @project = Project.find(params[:id])
     end
 
     # *******************************************
@@ -45,10 +51,11 @@ class ProjectsController < ApplicationController
     # *******************************************
     # edit,updateはどちらかが書けることはできない
     def edit
-        @project = Project.find(params[:id])
+        # コントローラーでは対象となるデータを参照するだけなのかもしれない。
+        # @project = Project.find(params[:id])
     end
     def update
-        @project = Project.find(params[:id])
+        # @project = Project.find(params[:id])
         if @project.update(project_params)
             redirect_to projects_path
         else
@@ -58,13 +65,24 @@ class ProjectsController < ApplicationController
     end
     # *******************************************
 
-    # 決まり文句的なもの（代表的な手法）ー＞入力情報を管理する
-    # プライベート関数にする、外部から呼び出すことができない。
-    # 昔はこのようにしていなかったようであるが、セキュリティ上このようにするらしい
-    # ここでフィルタリングして渡すというのが最近の手法らしい
+    def destroy
+        # @project = Project.find(params[:id])
+        @project.destroy
+        redirect_to projects_path
+    end
+
     private
+        # 決まり文句的なもの（代表的な手法）ー＞入力情報を管理する
+        # プライベート関数にする、外部から呼び出すことができない。
+        # 昔はこのようにしていなかったようであるが、セキュリティ上このようにするらしい
+        # ここでフィルタリングして渡すというのが最近の手法らしい
         def project_params
             # 色々情報がる待っているparams[:project]の中の:titleだけを取る。
             params[:project].permit(:title)
+        end
+
+        # 他のスクリプトで使わないので
+        def set_project
+            @project = Project.find(params[:id])
         end
 end
