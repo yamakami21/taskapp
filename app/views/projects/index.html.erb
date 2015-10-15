@@ -1,6 +1,5 @@
 <!-- projectsコントローラのindexアクションに対応するviewの名前は、このファイル名のようになる。規約の一つである。 -->
-<h1>Projects</h1>
-<h4>試しだよ〜ん"ピカッー"</h4>
+<h1 class= "center jumbotron">Projects</h1>
 <ul>
 	<!--
 	ループをまあしてあげる。
@@ -34,5 +33,4 @@ link_to, 名前（表示してみえるもの）, パスの名前
 2.newのビューの作成、
 3.アクションの作成をしてあげるだけでよい。
 -->
-
-<p><%= link_to "Add new", new_project_path %></p>
+<button type="button" class="btn btn-warning"><%= link_to "Add new", new_project_path, style:"color: white;" %></button>

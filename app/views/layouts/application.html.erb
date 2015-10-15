@@ -13,16 +13,7 @@
 </head>
 <body>
 
-
-    <!-- すべてのウェブページにおいて画像を添付するとき -->
-    <!-- <%=%>はルビーから渡したデータを埋め込んでいる -->
-    <!--
-     railsの中にイメージタグヘルパーというものがある
-     以下のように書くと、assetsの中のimagesの中に入ってくれる。
-     （railsの機能）
-    -->
-    <%= image_tag "logo.png"%>
-    <nav class="navbar">
+    <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">TaskApp</a>
@@ -31,11 +22,8 @@
     </nav>
     <div class="container">
         <%= yield %>
-        <!-- 表示する文字列、pathの名前 -->
-        <button type="button" class="btn btn-primary">Button</button>
-        <button type="button" class="btn btn-warning"><%= link_to "Home", projects_path %></button>
-        <br/>
-        <%= link_to "Home", projects_path %>
+        <button type="button" class="btn btn-warning"><%= link_to "Home", projects_path, style:"color: white;" %></button>
+
     </div>
 </body>
 </html>
